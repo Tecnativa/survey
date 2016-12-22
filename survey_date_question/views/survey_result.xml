@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <template id="result" inherit_id="survey.result">
+            <xpath expr="//t[@t-if='question.description']" position="after">
+                <t t-if="question.type == 'date'">
+                    <t t-call="survey.result_text"></t>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="result_text" inherit_id="survey.result_text">
+            <xpath expr="//span[@t-field='user_input.value_date']/../.."
+                   position="after">
+                <t t-if="question.type == 'date'">
+                    <td>
+                        <span class="oe_date"
+                              t-field="user_input.value_date_date"/><br/>
+                    </td>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

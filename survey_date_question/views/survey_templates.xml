@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="page" inherit_id="survey.page">
+            <xpath expr="//div[@t-field='question.description']" position="after">
+                <t t-if="question.type == 'date'">
+                    <t t-call="survey_date_question.date" />
+                </t>
+            </xpath>
+            <xpath expr="//div[@t-field='question.description']" position="attributes">
+                <attribute name="class">oe_no_empty</attribute>
+            </xpath>
+        </template>
+
+        <!-- Question widget -->
+        <template id="date" name="Date box">
+            <input type="date" class="form-control" t-att-name="prefix"/>
+        </template>
+
+        <!-- Printable view of a survey (all pages) -->
+        <template id="survey_print" inherit_id="survey.survey_print">
+            <xpath expr="//t[@t-if='question.description']" position="after">
+                <t t-if="question.type == 'date'">
+                    <t t-call="survey_date_question.date" />
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
+
