@@ -15,7 +15,7 @@
 
         <!-- Question widget -->
         <template id="date" name="Date box">
-            <input type="date" class="form-control" t-att-name="prefix"/>
+            <input type="text" class="form-control" t-att-name="prefix"/>
         </template>
 
         <!-- Printable view of a survey (all pages) -->
